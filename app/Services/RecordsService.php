@@ -5,6 +5,7 @@ namespace App\Services;
 
 use App\Models\Records;
 use Carbon\Carbon;
+
 class RecordsService {
 
 
@@ -26,6 +27,8 @@ class RecordsService {
 
 
     public function create(array $data) {
+
+        
         return Records::create($data);
     }
 

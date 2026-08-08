@@ -7,7 +7,7 @@ use App\Services\RecordsService;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Throwable;
-
+use App\Events\NewData;
 
 class RecordsController extends Controller
 {
@@ -39,6 +39,8 @@ class RecordsController extends Controller
         try {
             $this->recordsService->create($data);
 
+
+            event(new NewData());
             return response()->json([
                 'msg' => 'created!'
             ], 201);

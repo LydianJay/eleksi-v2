@@ -1,5 +1,6 @@
 import Dashboard from "../components/Dashboard";
 import ReactApexChart from "react-apexcharts";
+import NotifListener from "../components/NotifListener";
 import { useEffect, useState } from "react";
 
 import api from "../services/api";
@@ -309,7 +310,6 @@ export default function DashboardView() {
         <Dashboard
             child={
                 <div className="space-y-6">
-
                     {/* =================================================
                         HEADER
                     ================================================== */}
@@ -323,18 +323,16 @@ export default function DashboardView() {
                         </p>
                     </div>
 
-
                     {/* =================================================
                         STAT CARDS
                     ================================================== */}
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-
                         {/* Voltage */}
-                        <div className="rounded-2xl border border-slate-200
-                                        bg-white p-5 shadow-sm">
-
+                        <div
+                            className="rounded-2xl border border-slate-200
+                                        bg-white p-5 shadow-sm"
+                        >
                             <div className="flex items-center justify-between">
-
                                 <div>
                                     <p className="text-sm font-medium text-slate-500">
                                         Voltage
@@ -343,28 +341,28 @@ export default function DashboardView() {
                                     <p className="mt-2 text-2xl font-bold text-[#121358]">
                                         {data.length
                                             ? `${Number(
-                                                data[data.length - 1].voltage
-                                            ).toFixed(1)} V`
+                                                  data[data.length - 1].voltage,
+                                              ).toFixed(1)} V`
                                             : "--"}
                                     </p>
                                 </div>
 
-                                <div className="flex h-11 w-11 items-center
+                                <div
+                                    className="flex h-11 w-11 items-center
                                                 justify-center rounded-xl
-                                                bg-[#2F578A]/10 text-[#2F578A]">
+                                                bg-[#2F578A]/10 text-[#2F578A]"
+                                >
                                     <i className="fa fa-bolt text-lg" />
                                 </div>
-
                             </div>
                         </div>
 
-
                         {/* Current */}
-                        <div className="rounded-2xl border border-slate-200
-                                        bg-white p-5 shadow-sm">
-
+                        <div
+                            className="rounded-2xl border border-slate-200
+                                        bg-white p-5 shadow-sm"
+                        >
                             <div className="flex items-center justify-between">
-
                                 <div>
                                     <p className="text-sm font-medium text-slate-500">
                                         Current
@@ -373,28 +371,28 @@ export default function DashboardView() {
                                     <p className="mt-2 text-2xl font-bold text-[#121358]">
                                         {data.length
                                             ? `${Number(
-                                                data[data.length - 1].current
-                                            ).toFixed(2)} A`
+                                                  data[data.length - 1].current,
+                                              ).toFixed(2)} A`
                                             : "--"}
                                     </p>
                                 </div>
 
-                                <div className="flex h-11 w-11 items-center
+                                <div
+                                    className="flex h-11 w-11 items-center
                                                 justify-center rounded-xl
-                                                bg-[#36ADA3]/10 text-[#36ADA3]">
+                                                bg-[#36ADA3]/10 text-[#36ADA3]"
+                                >
                                     <i className="fa fa-wave-square text-lg" />
                                 </div>
-
                             </div>
                         </div>
 
-
                         {/* Power */}
-                        <div className="rounded-2xl border border-slate-200
-                                        bg-white p-5 shadow-sm">
-
+                        <div
+                            className="rounded-2xl border border-slate-200
+                                        bg-white p-5 shadow-sm"
+                        >
                             <div className="flex items-center justify-between">
-
                                 <div>
                                     <p className="text-sm font-medium text-slate-500">
                                         Power
@@ -403,28 +401,28 @@ export default function DashboardView() {
                                     <p className="mt-2 text-2xl font-bold text-[#121358]">
                                         {data.length
                                             ? `${Number(
-                                                data[data.length - 1].power
-                                            ).toFixed(1)} W`
+                                                  data[data.length - 1].power,
+                                              ).toFixed(1)} W`
                                             : "--"}
                                     </p>
                                 </div>
 
-                                <div className="flex h-11 w-11 items-center
+                                <div
+                                    className="flex h-11 w-11 items-center
                                                 justify-center rounded-xl
-                                                bg-[#232F72]/10 text-[#232F72]">
+                                                bg-[#232F72]/10 text-[#232F72]"
+                                >
                                     <i className="fa fa-plug text-lg" />
                                 </div>
-
                             </div>
                         </div>
 
-
                         {/* Energy */}
-                        <div className="rounded-2xl border border-slate-200
-                                        bg-white p-5 shadow-sm">
-
+                        <div
+                            className="rounded-2xl border border-slate-200
+                                        bg-white p-5 shadow-sm"
+                        >
                             <div className="flex items-center justify-between">
-
                                 <div>
                                     <p className="text-sm font-medium text-slate-500">
                                         Energy
@@ -433,58 +431,59 @@ export default function DashboardView() {
                                     <p className="mt-2 text-2xl font-bold text-[#121358]">
                                         {data.length
                                             ? `${Number(
-                                                data[data.length - 1].energy
-                                            ).toFixed(3)} kWh`
+                                                  data[data.length - 1].energy,
+                                              ).toFixed(3)} kWh`
                                             : "--"}
                                     </p>
                                 </div>
 
-                                <div className="flex h-11 w-11 items-center
+                                <div
+                                    className="flex h-11 w-11 items-center
                                                 justify-center rounded-xl
-                                                bg-[#121358]/10 text-[#121358]">
+                                                bg-[#121358]/10 text-[#121358]"
+                                >
                                     <i className="fa fa-chart-line text-lg" />
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
-
 
                     {/* =================================================
                         CHARTS
                     ================================================== */}
 
                     {loading ? (
-                        <div className="flex min-h-[400px] items-center
+                        <div
+                            className="flex min-h-[400px] items-center
                                         justify-center rounded-2xl
-                                        border border-slate-200 bg-white">
-
+                                        border border-slate-200 bg-white"
+                        >
                             <div className="text-center">
-
-                                <div className="mx-auto mb-3 h-8 w-8
+                                <div
+                                    className="mx-auto mb-3 h-8 w-8
                                                 animate-spin rounded-full
                                                 border-4 border-slate-200
-                                                border-t-[#36ADA3]" />
+                                                border-t-[#36ADA3]"
+                                />
 
                                 <p className="text-sm text-slate-500">
                                     Loading electrical data...
                                 </p>
-
                             </div>
                         </div>
                     ) : data.length === 0 ? (
-
-                        <div className="flex min-h-[400px] items-center
+                        <div
+                            className="flex min-h-[400px] items-center
                                         justify-center rounded-2xl
-                                        border border-slate-200 bg-white">
-
+                                        border border-slate-200 bg-white"
+                        >
                             <div className="text-center">
-
-                                <div className="mx-auto mb-3 flex h-12 w-12
+                                <div
+                                    className="mx-auto mb-3 flex h-12 w-12
                                                 items-center justify-center
                                                 rounded-xl bg-[#121358]/10
-                                                text-[#121358]">
+                                                text-[#121358]"
+                                >
                                     <i className="fa fa-chart-line text-xl" />
                                 </div>
 
@@ -495,18 +494,15 @@ export default function DashboardView() {
                                 <p className="mt-1 text-sm text-slate-500">
                                     There are no records for today.
                                 </p>
-
                             </div>
                         </div>
-
                     ) : (
-
                         <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
-
                             {/* Voltage */}
-                            <div className="rounded-2xl border border-slate-200
-                                            bg-white p-5 shadow-sm">
-
+                            <div
+                                className="rounded-2xl border border-slate-200
+                                            bg-white p-5 shadow-sm"
+                            >
                                 <div className="mb-4">
                                     <h2 className="font-semibold text-[#121358]">
                                         Voltage
@@ -525,11 +521,11 @@ export default function DashboardView() {
                                 />
                             </div>
 
-
                             {/* Current */}
-                            <div className="rounded-2xl border border-slate-200
-                                            bg-white p-5 shadow-sm">
-
+                            <div
+                                className="rounded-2xl border border-slate-200
+                                            bg-white p-5 shadow-sm"
+                            >
                                 <div className="mb-4">
                                     <h2 className="font-semibold text-[#121358]">
                                         Current
@@ -548,11 +544,11 @@ export default function DashboardView() {
                                 />
                             </div>
 
-
                             {/* Power */}
-                            <div className="rounded-2xl border border-slate-200
-                                            bg-white p-5 shadow-sm">
-
+                            <div
+                                className="rounded-2xl border border-slate-200
+                                            bg-white p-5 shadow-sm"
+                            >
                                 <div className="mb-4">
                                     <h2 className="font-semibold text-[#121358]">
                                         Power Consumption
@@ -571,11 +567,11 @@ export default function DashboardView() {
                                 />
                             </div>
 
-
                             {/* Energy */}
-                            <div className="rounded-2xl border border-slate-200
-                                            bg-white p-5 shadow-sm">
-
+                            <div
+                                className="rounded-2xl border border-slate-200
+                                            bg-white p-5 shadow-sm"
+                            >
                                 <div className="mb-4">
                                     <h2 className="font-semibold text-[#121358]">
                                         Energy Consumption
@@ -593,10 +589,18 @@ export default function DashboardView() {
                                     height={300}
                                 />
                             </div>
-
                         </div>
                     )}
 
+                    <NotifListener
+                        listenOn="new-data"
+                        eventName="NewData"
+                        onTrigger={() => {
+                            console.log("Fetching data");
+                            fetchData();
+                        }}
+                        
+                    />
                 </div>
             }
         />
