@@ -32,11 +32,18 @@ class AuthController extends Controller
         $email      = $request->input('email');
         $password   = $request->input('password');
         try {
-            if($this->authService->login($email, $password)) {
+            if(!$this->authService->login($email, $password)) {
                 return response()->json([
                     'msg' => 'Invalid email or password!',
                 ], 400);
             }
+
+            $request->session()->regenerate();
+
+            return response()->json([
+                'msg'   => "login success",
+                'url'   => route('records.view'),
+            ]);
         } catch(Throwable $e) {
             $msg    = $e->getMessage();
             $trace  = $e->getTrace();
@@ -50,10 +57,7 @@ class AuthController extends Controller
         
 
 
-        return response()->json([
-            'msg'   => "login success",
-            'url'   => route('records.view'),
-        ]);
+        
 
     }
 }
