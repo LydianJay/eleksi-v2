@@ -15,7 +15,7 @@ class RecordsController extends Controller
         private RecordsService $recordsService
     ){}
     public function index(Request $request) {
-        $data = $this->recordsService->paginate();
+        $data = $this->recordsService->today();
 
         return response()->json($data);
     }

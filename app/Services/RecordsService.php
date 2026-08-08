@@ -21,6 +21,16 @@ class RecordsService {
 
     }
 
+    public function today() {
+        return Records::whereBetween('created_at', [
+                    Carbon::today()->startOfDay(), 
+                    Carbon::today()->endOfDay()
+                ])
+                ->orderBy('created_at', 'asc')
+                ->get()
+                ->toArray();
+    }
+
     public function all() : array {
         return Records::all()->toArray();
     }
