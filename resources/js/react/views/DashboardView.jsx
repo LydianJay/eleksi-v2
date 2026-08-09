@@ -11,7 +11,10 @@ export default function DashboardView() {
 
     const fetchData = async () => {
         try {
-            setLoading(true);
+
+            if(data.length == 0) {
+                setLoading(true);
+            }
 
             const res = await api.get("/records");
             setData(res.data ?? []);
@@ -430,7 +433,7 @@ export default function DashboardView() {
                                     <p className="mt-2 text-2xl font-bold text-[#121358]">
                                         {data.length
                                             ? `${Number(
-                                                  data[data.length - 1].energy,
+                                                  data[0].energy - data[data.length - 1].energy,
                                               ).toFixed(3)} kWh`
                                             : "--"}
                                     </p>
@@ -453,7 +456,7 @@ export default function DashboardView() {
 
                     {loading ? (
                         <div
-                            className="flex min-h-[400px] items-center
+                            className="flex min-h-100 items-center
                                         justify-center rounded-2xl
                                         border border-slate-200 bg-white"
                         >
@@ -472,7 +475,7 @@ export default function DashboardView() {
                         </div>
                     ) : data.length === 0 ? (
                         <div
-                            className="flex min-h-[400px] items-center
+                            className="flex min-h-100 items-center
                                         justify-center rounded-2xl
                                         border border-slate-200 bg-white"
                         >
@@ -595,10 +598,8 @@ export default function DashboardView() {
                         listenOn="new-data"
                         eventName="NewData"
                         onTrigger={() => {
-                            console.log("Fetching data");
                             fetchData();
                         }}
-                        
                     />
                 </div>
             }
