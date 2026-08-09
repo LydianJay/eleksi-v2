@@ -14,8 +14,6 @@ export default function DashboardView() {
             setLoading(true);
 
             const res = await api.get("/records");
-            console.log(res.data);
-            // Laravel paginate() returns the records inside `data`
             setData(res.data ?? []);
 
         } catch (e) {
