@@ -433,7 +433,8 @@ export default function DashboardView() {
                                     <p className="mt-2 text-2xl font-bold text-[#121358]">
                                         {data.length
                                             ? `${Number(
-                                                  data[0].energy - data[data.length - 1].energy,
+                                                  data[data.length - 1].energy -
+                                                      data[0].energy,
                                               ).toFixed(3)} kWh`
                                             : "--"}
                                     </p>
