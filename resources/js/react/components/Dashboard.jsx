@@ -6,8 +6,9 @@ import { menuConfig } from "../config/menuConfig";
 import PanelComponent from "./PanelComponent";
 
 export default function Dashboard({ child }) {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
-    const [userMenuOpen, setUserMenuOpen] = useState(false);
+    
+    const [sidebarOpen, setSidebarOpen]     = useState(false);
+    const [userMenuOpen, setUserMenuOpen]   = useState(false);
 
     return (
         <div className="min-h-screen bg-slate-100">
@@ -44,14 +45,14 @@ export default function Dashboard({ child }) {
                             >
                                 <img
                                     src={logo}
-                                    alt="PIEP Logo"
+                                    alt="Logo"
                                     className="h-full w-full object-cover"
                                 />
                             </div>
 
                             <div className="hidden sm:block">
                                 <h1 className="text-lg font-bold leading-tight text-slate-800">
-                                    PIEP Console
+                                    ELEKSI-V2
                                 </h1> 
 
                                 <p className="text-xs text-slate-400">
@@ -114,7 +115,7 @@ export default function Dashboard({ child }) {
                                         </p>
 
                                         <p className="text-xs text-gray-600">
-                                            PIEP Console
+                                            ELEKSI Console
                                         </p>
                                     </div>
 
@@ -183,7 +184,7 @@ export default function Dashboard({ child }) {
 
                         <div>
                             <p className="text-sm font-bold text-white">
-                                PIEP Console
+                                ELEKSI Console
                             </p>
 
                             <p className="text-[11px] text-slate-400">
@@ -235,7 +236,7 @@ export default function Dashboard({ child }) {
 
                             <div className="min-w-0">
                                 <p className="truncate text-xs font-semibold text-slate-700">
-                                    PIEP Administration
+                                    ELEKSI Administration
                                 </p>
 
                                 <p className="text-[10px] text-slate-400">

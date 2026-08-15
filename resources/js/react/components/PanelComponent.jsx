@@ -150,7 +150,7 @@ export default function PanelComponent({ item }) {
                                     {/* Submenu dot */}
                                     <span
                                         className="
-                                            absolute -left-[1.15rem]
+                                            absolute left-[-1.15rem]
                                             h-2 w-2
                                             rounded-full
                                             border-2
